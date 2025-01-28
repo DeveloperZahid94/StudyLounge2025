@@ -167,3 +167,4 @@ C:\project\StudyLounge\StudyLounge25\obj\Debug\net8.0\refint\StudyLounge25.dll
 C:\project\StudyLounge\StudyLounge25\obj\Debug\net8.0\StudyLounge25.pdb
 C:\project\StudyLounge\StudyLounge25\obj\Debug\net8.0\StudyLounge25.genruntimeconfig.cache
 C:\project\StudyLounge\StudyLounge25\obj\Debug\net8.0\ref\StudyLounge25.dll
+C:\project\StudyLounge\StudyLounge25\bin\Debug\net8.0\AutoMapper.dll

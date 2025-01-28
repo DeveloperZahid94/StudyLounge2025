@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using StudyLounge25.Data;
+using StudyLounge25.Mapper;
+using StudyLounge25.ServicesRepo.IServiceRepo;
+using StudyLounge25.ServicesRepo.Repositories;
 using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +20,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<SLdbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AppConn")));
 
-
+builder.Services.AddScoped<IStudent,StudentRepo>();
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 
 var app = builder.Build();
