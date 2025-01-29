@@ -1,0 +1,79 @@
+<div class="container mt-3">
+    <h3>Register Student</h3><hr>
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <!-- First Name -->
+        <div class="col-md-6 mb-3">
+          <label for="firstName" class="form-label">First Name</label>
+          <input type="text" class="form-control" id="firstName" formControlName="firstName" required>
+          <div *ngIf="studentForm.get('firstName')?.invalid && studentForm.get('firstName')?.touched" class="text-danger">
+            First Name is required
+          </div>
+        </div>
+  
+        <!-- Last Name -->
+        <div class="col-md-6 mb-3">
+          <label for="lastName" class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="lastName" formControlName="lastName" required>
+          <div *ngIf="studentForm.get('lastName')?.invalid && studentForm.get('lastName')?.touched" class="text-danger">
+            Last Name is required
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <!-- Email -->
+        <div class="col-md-6 mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email" required>
+          <div *ngIf="studentForm.get('email')?.invalid && studentForm.get('email')?.touched" class="text-danger">
+            A valid email is required
+          </div>
+        </div>
+  
+        <!-- Phone Number -->
+        <div class="col-md-6 mb-3">
+          <label for="phoneNumber" class="form-label">Phone Number</label>
+          <input type="text" class="form-control" id="phoneNumber" formControlName="phoneNumber" required>
+          <div *ngIf="studentForm.get('phoneNumber')?.invalid && studentForm.get('phoneNumber')?.touched" class="text-danger">
+            Phone Number is required and should contain only digits
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <!-- Status -->
+        <div class="col-md-6 mb-3">
+          <label for="status" class="form-label">Status</label>
+          <input type="text" class="form-control" id="status" formControlName="status" required>
+          <div *ngIf="studentForm.get('status')?.invalid && studentForm.get('status')?.touched" class="text-danger">
+            Status is required
+          </div>
+        </div>
+  
+        <!-- Address -->
+        <div class="col-md-6 mb-3">
+          <label for="address" class="form-label">Address</label>
+          <textarea class="form-control" id="address" formControlName="address"></textarea>
+        </div>
+      </div>
+  
+      <div class="row">
+        <!-- Date of Birth -->
+        <div class="col-md-6 mb-3">
+          <label for="dateOfBirth" class="form-label">Date of Birth</label>
+          <input type="date" class="form-control" id="dateOfBirth" formControlName="dateOfBirth">
+        </div>
+  
+        <!-- Registration Date -->
+        <div class="col-md-6 mb-3">
+          <label for="registrationDate" class="form-label">Registration Date</label>
+          <input type="date" class="form-control" id="registrationDate" formControlName="registrationDate">
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" >{{ isEditMode ? 'Save Changes' : 'Add Student' }}</button>
+      <button type="submit" class="btn btn-primary" (click)="closeDialog()" >Cancel</button>
+    </form>
+  </div>
+  <!-- [disabled]="studentForm.invalid" -->

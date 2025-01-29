@@ -8,5 +8,58 @@
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StudyLounge25.Controllers.StudentController",
+    "Method": "AddStudent",
+    "RelativePath": "api/Student/Addstudent",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "studentSaveDto",
+        "Type": "StudyLounge25.DTO.StudentSaveDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StudyLounge25.Controllers.StudentController",
+    "Method": "DeleteStudent",
+    "RelativePath": "api/Student/deletestudent{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StudyLounge25.Controllers.StudentController",
+    "Method": "UpdateStudent",
+    "RelativePath": "api/Student/Updatestudent{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "studentSaveDto",
+        "Type": "StudyLounge25.DTO.StudentSaveDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

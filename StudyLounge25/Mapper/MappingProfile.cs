@@ -9,6 +9,8 @@ namespace StudyLounge25.Mapper
         public MappingProfile()
         {
             CreateMap<studentDTO, StudentModal>().ReverseMap();
+            CreateMap<StudentSaveDto, StudentModal>().ReverseMap();
+
         }
     }
 }

@@ -23,6 +23,18 @@ builder.Services.AddDbContext<SLdbContext>(options =>
 builder.Services.AddScoped<IStudent,StudentRepo>();
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+
+    });
+    //options.AddPolicy("SpecificPolicy", policy =>
+    //policy.WithOrigins("https://yourfrontenddomain.com")
+    //      .AllowAnyHeader()
+    //      .AllowAnyMethod());
+});
 
 var app = builder.Build();
 
@@ -34,6 +46,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Use CORS before Authorization
+app.UseCors();
 
 app.UseAuthorization();
 
