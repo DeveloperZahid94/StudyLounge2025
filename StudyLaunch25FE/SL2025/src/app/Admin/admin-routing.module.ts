@@ -5,9 +5,9 @@ import { StudentAddComponent } from './Components/student-add/student-add.compon
 import { StudentListComponent } from './Components/student-list/student-list.component';
 
 const routes: Routes = [
-  { path: 'admin/student', component: StudentAddComponent },
-  { path: 'admin/viewStudent', component: StudentListComponent },
-  { path: '', component: AdminComponent }
+  { path: 'student', component: StudentAddComponent },
+  { path: 'viewStudent', component: StudentListComponent },
+  // { path: '**', component: StudentListComponent }
 
 ];
 

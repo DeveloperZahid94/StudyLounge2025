@@ -71,9 +71,11 @@
           <input type="date" class="form-control" id="registrationDate" formControlName="registrationDate">
         </div>
       </div>
-  
-      <button type="submit" class="btn btn-primary" >{{ isEditMode ? 'Save Changes' : 'Add Student' }}</button>
-      <button type="submit" class="btn btn-primary" (click)="closeDialog()" >Cancel</button>
+  <hr>
+    <div class="float-end mb-2">
+      <button type="submit" mat-raised-button color="primary" class="me-2" >{{ data ? 'Save Changes' : 'Add Student' }}</button>
+      <button type="button" mat-raised-button color="warn" (click)="closeDialog()" >Cancel</button>
+    </div>
     </form>
   </div>
   <!-- [disabled]="studentForm.invalid" -->

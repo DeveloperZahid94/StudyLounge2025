@@ -1,7 +1,16 @@
-<div class="container mt-3">
-    <!-- student-table.component.html -->
-<div class="container mt-5">
 
+<div class="container mt-3">
+<div class="">
+  <button mat-raised-button color="warn" class="me-2">
+    <mat-icon>do_not_disturb_on</mat-icon>
+    Delete
+</button>
+  <button mat-raised-button color="primary" (click)="studentAdd()"  class="">
+    <mat-icon>add_circle</mat-icon>
+    Add New
+  </button>
+  
+</div>
     <table class="table mt-3">
       <thead>
         <tr>
@@ -21,14 +30,11 @@
           <td>{{ student.phoneNumber }}</td>
           <td>{{ student.status }}</td>
           <td>
-            <button class="btn btn-warning btn-sm" (click)="editStudent(student)">Edit</button>
-            <button class="btn btn-danger btn-sm" (click)="deleteStudent(student.studentId)">Delete</button>
+            <mat-icon class="btn-sm" (click)="editStudent(student)">edit</mat-icon>
+            <mat-icon id="iconColor" class="btn-sm" (click)="deleteStudent(student.studentId)">delete</mat-icon>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
   
-
-  
-</div>

@@ -21,7 +21,7 @@ ngOnInit(): void {
 
 public editStudent(student:any): void {
   this.dialog.open(StudentAddComponent,{
-    width: 'auto',
+    width: '50%',
     data:student
     }).afterClosed().subscribe(res => {
      if(res){ 
@@ -38,7 +38,9 @@ private getAllStudents(){
   })
 }
 
-  
+studentAdd(){
+  this.editStudent(null);
+}
 
   deleteStudent(studentId: string): void {
     if (confirm('Are you sure you want to delete this student?')) {

@@ -12,9 +12,9 @@ import { RegistrationComponent } from './Authentication/registration/registratio
 import { LoginComponent } from './Authentication/login/login.component';
 import { ResetpaswordComponent } from './Authentication/resetpasword/resetpasword.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './Layout/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -22,17 +22,13 @@ import { MatDialogModule } from '@angular/material/dialog';
     RegistrationComponent,
     LoginComponent,
     ResetpaswordComponent,
-    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatSidenavModule,
     HttpClientModule,
+    LayoutModule,
     MatDialogModule
     
   ],
