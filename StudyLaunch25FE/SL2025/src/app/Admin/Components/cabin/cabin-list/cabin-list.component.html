@@ -1,0 +1,43 @@
+
+<div class="container-fluid me-3 mt-3">
+    <div class="">
+      <button mat-raised-button color="warn" class="me-2">
+        <mat-icon>do_not_disturb_on</mat-icon>
+        Delete
+    </button>
+      <button mat-raised-button color="primary" (click)="cabinAdd()"  class="">
+        <mat-icon>add_circle</mat-icon>
+        Add New
+      </button>
+      
+    </div>
+       <!-- Table for displaying cabins -->
+<table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>Cabin Name</th>
+        <th>Description</th>
+        <th>Has Wi-Fi</th>
+        <th>Has AC</th>
+        <th>Is Available</th>
+        <th>Price Per Day</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cabin of cabins">
+        <td>{{ cabin.cabinName }}</td>
+        <td>{{ cabin.description }}</td>
+        <td>{{ cabin.hasWifi ? 'Yes' : 'No' }}</td>
+        <td>{{ cabin.hasAc ? 'Yes' : 'No' }}</td>
+        <td>{{ cabin.isAvailable ? 'Yes' : 'No' }}</td>
+        <td>{{ cabin.pricePerDay | currency }}</td>
+        <td>
+            <mat-icon class="btn-sm" (click)="editCabin(cabin)">edit</mat-icon>
+            <mat-icon id="iconColor" class="btn-sm" (click)="deleteCabin(cabin.cabinId)">delete</mat-icon>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+      

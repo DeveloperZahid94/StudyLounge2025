@@ -22,12 +22,20 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { LayoutModule } from '../layout/layout.module';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSortModule } from '@angular/material/sort';
+import { AddCabinComponent } from './Components/cabin/add-cabin/add-cabin.component';
+import { CabinListComponent } from './Components/cabin/cabin-list/cabin-list.component';
+
+
 
 @NgModule({
   declarations: [
     AdminComponent,
     StudentAddComponent,
-    StudentListComponent
+    StudentListComponent,
+    AddCabinComponent,
+    CabinListComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +45,8 @@ import { LayoutModule } from '../layout/layout.module';
     MatSelectModule,MatIconModule,MatButtonModule,
     MatDialogModule,MatRadioModule,MatStepperModule,
     MatPaginatorModule, MatTableModule,MatCardModule,
-    MatTooltipModule,LayoutModule
+    MatTooltipModule,MatDividerModule,MatSortModule,
+    LayoutModule,
         
   ]
 })

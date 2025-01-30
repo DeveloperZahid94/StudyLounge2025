@@ -21,6 +21,8 @@ builder.Services.AddDbContext<SLdbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AppConn")));
 
 builder.Services.AddScoped<IStudent,StudentRepo>();
+builder.Services.AddScoped<ICabin, CabinRepo>();
+
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddCors(options =>

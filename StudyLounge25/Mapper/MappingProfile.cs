@@ -10,6 +10,8 @@ namespace StudyLounge25.Mapper
         {
             CreateMap<studentDTO, StudentModal>().ReverseMap();
             CreateMap<StudentSaveDto, StudentModal>().ReverseMap();
+            CreateMap<CabinFetchDto, CabinModal>().ReverseMap();
+
 
         }
     }
