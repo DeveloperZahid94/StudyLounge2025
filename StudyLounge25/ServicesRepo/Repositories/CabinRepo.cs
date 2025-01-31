@@ -25,6 +25,7 @@ namespace StudyLounge25.ServicesRepo.Repositories
         public async Task<List<CabinModal>> GetAllCabins()
         {
             return await _sLdbContext.Cabins.ToListAsync();
+
         }
 
         public async Task<CabinModal?> GetCabinById(Guid id)

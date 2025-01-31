@@ -1,5 +1,68 @@
 [
   {
+    "ContainingType": "StudyLounge25.Controllers.AssignmentController",
+    "Method": "AddAssignment",
+    "RelativePath": "api/Assignment/AddAssignment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "assignmentSaveDto",
+        "Type": "StudyLounge25.DTO.AssignmentSaveDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StudyLounge25.Controllers.AssignmentController",
+    "Method": "DeleteAssignment",
+    "RelativePath": "api/Assignment/DeleteAssignment{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StudyLounge25.Controllers.AssignmentController",
+    "Method": "GetAllAssignments",
+    "RelativePath": "api/Assignment/GetAssignments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StudyLounge25.Controllers.AssignmentController",
+    "Method": "UpdateAssignmnet",
+    "RelativePath": "api/Assignment/UpdateAssignmnet{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "assignmentSaveDto",
+        "Type": "StudyLounge25.DTO.AssignmentSaveDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "StudyLounge25.Controllers.CabinController",
     "Method": "AddCabin",
     "RelativePath": "api/Cabin/AddCabin",

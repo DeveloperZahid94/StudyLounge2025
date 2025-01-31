@@ -1,0 +1,43 @@
+
+<div class="container-fluid me-3 mt-3">
+    <div class="">
+      <button mat-raised-button color="warn" class="me-2">
+        <mat-icon>do_not_disturb_on</mat-icon>
+        Delete
+      </button>
+      <button mat-raised-button color="primary" (click)="assignmentAdd()" class="">
+        <mat-icon>add_circle</mat-icon>
+        Add New Assignment
+      </button>
+    </div>
+  
+    <!-- Table for displaying assignments -->
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>SNo.</th>
+          <th>Student</th>
+          <th>Cabin</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let assignment of assignments;let i=index">
+          <td>{{ i+1 }}</td>
+          <td>{{ assignment.studentName }}</td>
+          <td>{{ assignment.cabinName }}</td>
+          <td>{{ assignment.startDate | date }}</td>
+          <td>{{ assignment.endDate | date }}</td>
+          <td>{{ assignment.assignmentStatus }}</td>
+          <td>
+            <mat-icon class="btn-sm" (click)="editAssignment(assignment)">edit</mat-icon>
+            <mat-icon id="iconColor" class="btn-sm" (click)="deleteAssignment(assignment.assignmentId)">delete</mat-icon>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

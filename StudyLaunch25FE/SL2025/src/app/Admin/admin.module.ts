@@ -26,6 +26,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSortModule } from '@angular/material/sort';
 import { AddCabinComponent } from './Components/cabin/add-cabin/add-cabin.component';
 import { CabinListComponent } from './Components/cabin/cabin-list/cabin-list.component';
+import { AssignmentComponent } from './Components/cabin/assignment/assignment.component';
+import { FeeComponent } from './Components/fee/fee.component';
+import { ReportsComponent } from './Components/reports/reports.component';
+import { AssignmentListComponent } from './Components/cabin/assignment-list/assignment-list.component';
 
 
 
@@ -35,7 +39,11 @@ import { CabinListComponent } from './Components/cabin/cabin-list/cabin-list.com
     StudentAddComponent,
     StudentListComponent,
     AddCabinComponent,
-    CabinListComponent
+    CabinListComponent,
+    AssignmentComponent,
+    FeeComponent,
+    ReportsComponent,
+    AssignmentListComponent
   ],
   imports: [
     CommonModule,

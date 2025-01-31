@@ -1,0 +1,49 @@
+<div class="container">
+    <h3>Assignment</h3><hr>
+    <form [formGroup]="assignmentForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="studentSelect" class="form-label">Student</label>
+          <select class="form-control" formControlName="studentId" required>
+            <option *ngFor="let student of students" [value]="student.studentId">{{student.firstName}}{{student.lastName}}</option>
+          </select>
+        </div>
+        
+        <div class="col-md-6 mb-3">
+          <label for="cabinSelect" class="form-label">Cabin</label>
+          <select class="form-control" formControlName="cabinId" required>
+            <option *ngFor="let cabin of cabins" [value]="cabin.cabinId">{{ cabin.cabinName }}</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="startDate" class="form-label">Start Date</label>
+          <input type="date" id="startDate" class="form-control" formControlName="startDate" required>
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <label for="endDate" class="form-label">End Date</label>
+          <input type="date" id="endDate" class="form-control" formControlName="endDate" required>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="statusSelect" class="form-label">Assignment Status</label>
+          <select id="statusSelect" class="form-control" formControlName="assignmentStatus">
+            <option value="Pending">Pending</option>
+            <option value="Completed">Completed</option>
+            <option value="In Progress">In Progress</option>
+          </select>
+        </div>
+      </div>
+  <hr>
+      <div class="float-end mb-2">
+        <button type="submit" mat-raised-button class="me-2" color="primary" >Save Assignment</button>
+        <button type="button" mat-raised-button color="warn" (click)="dialogRef.close()">Cancel</button>
+      </div>
+    </form>
+  </div>
+  <!-- [disabled]="assignmentForm.invalid" -->

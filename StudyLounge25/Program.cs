@@ -22,6 +22,8 @@ builder.Services.AddDbContext<SLdbContext>(options =>
 
 builder.Services.AddScoped<IStudent,StudentRepo>();
 builder.Services.AddScoped<ICabin, CabinRepo>();
+builder.Services.AddScoped<IAssignment, AssignmentRepo>();
+
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
