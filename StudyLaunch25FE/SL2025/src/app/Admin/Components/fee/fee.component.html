@@ -1,1 +1,112 @@
-<p>fee works!</p>
+<div class="container-fluid me-3 mt-3">
+    <div class="mb-3">
+      <button mat-raised-button color="warn" class="me-2">
+        <mat-icon>do_not_disturb_on</mat-icon>
+        Delete
+      </button>
+      <button mat-raised-button color="primary"  class="">
+        <mat-icon>add_circle</mat-icon>
+        Add New Payment
+      </button>
+    </div>
+  
+    <!-- Table for displaying payment details -->
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+          <th>SNo.</th>
+          <th>Student Name</th>
+          <th>Contact</th>
+          <th>Amount</th>
+          <th>Payment Date</th>
+          <th>Payment Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payment of payments; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ payment.studentName }}</td>
+          <td>{{ payment.studentContact }}</td>
+          <td>{{ payment.amount | currency }}</td>
+          <td>{{ payment.paymentDate | date }}</td>
+          <td>{{ payment.paymentStatus }}</td>
+          <td>
+            <div class="d-flex">
+              <div class="example-button-container">
+                <button mat-raised-button color="primary" (click)="paymentAdd(payment)" class="">
+                    <mat-icon>add_circle</mat-icon>
+                    Proceed To Payment
+                  </button>
+              </div>&nbsp;
+              
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+
+
+
+<div class="container d-none">
+    <div class="payment-form">
+      <h3 class="text-center mb-4">Payment Information</h3>
+  
+      <form>
+        <div class="mb-3">
+          <label for="cardNumber" class="form-label">Card Number</label>
+          <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9101 1121" required>
+        </div>
+  
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="expirationDate" class="form-label">Expiration Date</label>
+            <input type="month" class="form-control" id="expirationDate" required>
+          </div>
+  
+          <div class="col-md-6 mb-3">
+            <label for="cvv" class="form-label">CVV</label>
+            <input type="text" class="form-control" id="cvv" placeholder="123" required>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="billingName" class="form-label">Billing Name</label>
+          <input type="text" class="form-control" id="billingName" placeholder="John Doe" required>
+        </div>
+  
+        <div class="mb-3">
+          <label for="billingAddress" class="form-label">Billing Address</label>
+          <input type="text" class="form-control" id="billingAddress" placeholder="123 Main St" required>
+        </div>
+  
+        <div class="mb-3">
+          <label for="billingZip" class="form-label">Billing Zip Code</label>
+          <input type="text" class="form-control" id="billingZip" placeholder="12345" required>
+        </div>
+  
+        <!-- Payment Options -->
+        <div class="payment-options">
+          <button type="button" class="btn btn-light payment-option-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Google_Pay_logo_2018.png" alt="Google Pay Logo" />
+            Google Pay
+          </button>
+          <button type="button" class="btn btn-light payment-option-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/PhonePe_logo.svg/800px-PhonePe_logo.svg.png" alt="PhonePe Logo" />
+            PhonePe
+          </button>
+          <button type="button" class="btn btn-light payment-option-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/QR_Code_logo.png" alt="QR Scanner Icon" />
+            Scan QR Code
+          </button>
+        </div>
+  
+        <div class="d-grid gap-2">
+          <button type="submit" class="btn btn-submit">Submit Payment</button>
+        </div>
+      </form>
+    </div>
+  </div>

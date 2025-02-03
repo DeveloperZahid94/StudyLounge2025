@@ -11,7 +11,7 @@
         
         <div class="col-md-6 mb-3">
           <label for="cabinSelect" class="form-label">Cabin</label>
-          <select class="form-control" formControlName="cabinId" required>
+          <select class="form-control" formControlName="cabinId" (change)="cabinChange()" required>
             <option *ngFor="let cabin of cabins" [value]="cabin.cabinId">{{ cabin.cabinName }}</option>
           </select>
         </div>
@@ -20,23 +20,28 @@
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="startDate" class="form-label">Start Date</label>
-          <input type="date" id="startDate" class="form-control" formControlName="startDate" required>
+          <input type="date" id="startDate" [min]="minDate" class="form-control" formControlName="startDate" required>
         </div>
   
         <div class="col-md-6 mb-3">
           <label for="endDate" class="form-label">End Date</label>
-          <input type="date" id="endDate" class="form-control" formControlName="endDate" required>
+          <input type="date" id="endDate" [min]="minDate" class="form-control" formControlName="endDate" required>
         </div>
       </div>
   
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="statusSelect" class="form-label">Assignment Status</label>
-          <select id="statusSelect" class="form-control" formControlName="assignmentStatus">
-            <option value="Pending">Pending</option>
-            <option value="Completed">Completed</option>
-            <option value="In Progress">In Progress</option>
+          <select id="statusSelect" class="form-control" formControlName="assignmentStatus">  
+            <option value="InActive">InActive</option>
+            <option value="Active">Active</option>
           </select>
+        </div>
+        <div class="col-md-6 mb-3 mt-2">
+            <label>Rate</label>
+            <input type="text" class="form-control" readonly value="{{rates}}"
+            style="background-color: lightgray;"
+            />
         </div>
       </div>
   <hr>

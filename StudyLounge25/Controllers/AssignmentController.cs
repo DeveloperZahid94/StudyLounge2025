@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using StudyLounge25.DomainModels;
 using StudyLounge25.DTO;
 using StudyLounge25.ServicesRepo.IServiceRepo;
@@ -48,6 +49,7 @@ namespace StudyLounge25.Controllers
         [HttpPost("AddAssignment")]
         public async Task<IActionResult> AddAssignment([FromBody] AssignmentSaveDto assignmentSaveDto)
         {
+            
             var cabinAssg = new CabinAssignmentModal
             {
                 StudentId=assignmentSaveDto.StudentId,

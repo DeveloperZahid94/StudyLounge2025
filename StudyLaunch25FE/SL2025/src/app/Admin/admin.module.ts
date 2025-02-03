@@ -30,6 +30,8 @@ import { AssignmentComponent } from './Components/cabin/assignment/assignment.co
 import { FeeComponent } from './Components/fee/fee.component';
 import { ReportsComponent } from './Components/reports/reports.component';
 import { AssignmentListComponent } from './Components/cabin/assignment-list/assignment-list.component';
+import { InvoiceComponent } from './Components/fee/invoice/invoice.component';
+import { PaymentDialogComponent } from './Components/fee/payment-dialog/payment-dialog.component';
 
 
 
@@ -43,7 +45,9 @@ import { AssignmentListComponent } from './Components/cabin/assignment-list/assi
     AssignmentComponent,
     FeeComponent,
     ReportsComponent,
-    AssignmentListComponent
+    AssignmentListComponent,
+    InvoiceComponent,
+    PaymentDialogComponent
   ],
   imports: [
     CommonModule,

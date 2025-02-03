@@ -33,9 +33,24 @@
           <td>{{ assignment.endDate | date }}</td>
           <td>{{ assignment.assignmentStatus }}</td>
           <td>
-            <mat-icon class="btn-sm" (click)="editAssignment(assignment)">edit</mat-icon>
-            <mat-icon id="iconColor" class="btn-sm" (click)="deleteAssignment(assignment.assignmentId)">delete</mat-icon>
-          </td>
+            <div class="d-flex">
+                <div class="example-button-container">
+                    <button color="primary" mat-mini-fab aria-label="Example icon button with a menu icon">
+                      <mat-icon>currency_rupee</mat-icon>
+                    </button>
+                </div>&nbsp;
+                <div class="example-button-container">
+                <button  color="primary" mat-mini-fab (click)="editAssignment(assignment)">
+                    <mat-icon class="btn-sm" >edit</mat-icon>
+                </button>
+                </div>&nbsp;
+                <div class="example-button-container">
+                <button color="warn" mat-mini-fab  (click)="deleteAssignment(assignment.assignmentId)">
+                    <mat-icon id=""  >delete</mat-icon>
+                </button>
+                </div>
+            </div> 
+        </td>
         </tr>
       </tbody>
     </table>

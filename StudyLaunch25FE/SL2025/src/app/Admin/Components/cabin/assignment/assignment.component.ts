@@ -11,9 +11,11 @@ import { StudentService } from 'src/app/admin/Services/student.service';
   styleUrls: ['./assignment.component.css']
 })
 export class AssignmentComponent implements OnInit{
-  assignmentForm:any;
-  students:any;
-  cabins:any;
+  public assignmentForm:any;
+  public students:any;
+  public cabins:any;
+  public rates:number=0;
+  public minDate=new Date().toISOString().split('T')[0];
 
 
   constructor(
@@ -31,8 +33,9 @@ export class AssignmentComponent implements OnInit{
       cabinId: new FormControl(this.data ? this.data.cabinId : ''),
       startDate: new FormControl(this.data ? this.formatDate(this.data.startDate) : ''),
       endDate: new FormControl(this.data ? this.formatDate(this.data.endDate) : ''),
-      assignmentStatus: new FormControl(this.data ? this.data.assignmentStatus : 'Pending'),
+      assignmentStatus: new FormControl(this.data ? this.data.assignmentStatus : 'InActive'),
     });
+    this.watchFormChanges();
   }
 
   // Handle the form submission
@@ -68,7 +71,8 @@ export class AssignmentComponent implements OnInit{
   getStudents(){
     this._studentService.getStudents().subscribe((res:any)=>{
       if(res){
-        this.students=res;
+        console.log(res);
+        this.students=res.filter((val:any)=>val.status!='Assigned');
       }
     });
   }
@@ -76,9 +80,56 @@ export class AssignmentComponent implements OnInit{
   getCabins(){ 
     this._cabinService.getCabins().subscribe((res:any)=>{
       if(res){ 
+        console.log(res);
         this.cabins=res;
       }
     });
+  }
+
+  // Function to watch for changes in the form controls
+  watchFormChanges(): void {
+    // Trigger calculation when cabin changes
+    this.assignmentForm.get('cabinId')?.valueChanges.subscribe(() => {
+      this.cabinChange();
+    });
+
+    // Trigger calculation when start date changes
+    this.assignmentForm.get('startDate')?.valueChanges.subscribe(() => {
+      this.cabinChange();
+    });
+
+    // Trigger calculation when end date changes
+    this.assignmentForm.get('endDate')?.valueChanges.subscribe(() => {
+      this.cabinChange();
+    });
+  }
+ 
+  public cabinChange(){
+    const selectedCabinId = this.assignmentForm.get('cabinId')?.value;
+    const selectedCabin = this.cabins.find((cabin:any) => cabin.cabinId === selectedCabinId);
+
+    if (selectedCabin) {
+      this.calculateRate(selectedCabin.pricePerDay);
+    }
+  }
+
+  public calculateRate(cabinRate: number){ debugger
+    const startDate = this.assignmentForm.get('startDate')?.value;
+    const endDate = this.assignmentForm.get('endDate')?.value;
+
+    if (startDate && endDate) {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+
+      const timeDifference = end.getTime() - start.getTime();
+      const dayDifference = timeDifference / (1000 * 3600 * 24); // Convert milliseconds to days
+
+      if (dayDifference >= 0) {
+        this.rates = cabinRate * dayDifference;
+      } else {
+        this.rates = 0;
+      }
+    }
   }
 
   /** 
