@@ -26,20 +26,22 @@ namespace StudyLounge25.Controllers
         public async Task<IActionResult> GetAllAssignments()
         {
             var cabinModal = await _iassignment.GetAllAssignments();
-            // Project the result into a DTO that includes relevant data from Student and Cabin
+            
             var assignmentsDto = cabinModal.Select(a => new AssignmentFetchDto
             {
                 AssignmentId = a.AssignmentId,
                 StudentId = a.StudentId ?? Guid.Empty,  
-                StudentName = a.Student?.FirstName,  
+                StudentName = a.Student?.FirstName + " " + a.Student?.LastName, 
                 CabinId = a.CabinId ?? Guid.Empty,  
                 CabinName = a.Cabin?.CabinName,  
                 StartDate = a.StartDate,
                 EndDate = a.EndDate,
-                AssignmentStatus = a.AssignmentStatus
-            }).ToList(); // Project and convert to list
+                AssignmentStatus = a.AssignmentStatus,
+                amountToPay= (a.Cabin?.PricePerDay ?? 0) *
+                             ((a.EndDate.HasValue && a.StartDate.HasValue) ? (a.EndDate.Value - a.StartDate.Value).Days : 0)
+            }).ToList(); 
 
-            return Ok(assignmentsDto); // Return the list of DTOs
+            return Ok(assignmentsDto); 
             //return Ok(_mapper.Map<List<AssignmentFetchDto>>(cabinModal));
 
         }
@@ -59,7 +61,7 @@ namespace StudyLounge25.Controllers
                 AssignmentStatus = assignmentSaveDto.AssignmentStatus,
             };
             await _iassignment.AddAssignment(cabinAssg);
-            return Ok(cabinAssg);
+            return Ok("created");
 
         }
 

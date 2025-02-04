@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AssignmentComponent } from '../assignment/assignment.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AssignmentService } from 'src/app/Admin/Services/assignment.service';
+import { PaymentDialogComponent } from '../../fee/payment-dialog/payment-dialog.component';
 
 @Component({
   selector: 'app-assignment-list',
@@ -52,4 +53,20 @@ getAllAssignments() {
     }
   })
 }
+
+// Add a new payment
+  paymentAdd(paymentData:any): void {
+    console.log('Add New Payment');
+    this.dialog
+      .open(PaymentDialogComponent, {
+        width: 'auto',
+        data: paymentData,
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        if (res) {
+        }
+      });
+    }
+
 }

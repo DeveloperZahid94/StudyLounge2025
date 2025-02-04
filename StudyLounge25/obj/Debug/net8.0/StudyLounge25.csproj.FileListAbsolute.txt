@@ -5,6 +5,7 @@ C:\project\StudyLounge\StudyLounge25\bin\Debug\net8.0\StudyLounge25.deps.json
 C:\project\StudyLounge\StudyLounge25\bin\Debug\net8.0\StudyLounge25.runtimeconfig.json
 C:\project\StudyLounge\StudyLounge25\bin\Debug\net8.0\StudyLounge25.dll
 C:\project\StudyLounge\StudyLounge25\bin\Debug\net8.0\StudyLounge25.pdb
+C:\project\StudyLounge\StudyLounge25\bin\Debug\net8.0\AutoMapper.dll
 C:\project\StudyLounge\StudyLounge25\bin\Debug\net8.0\Azure.Core.dll
 C:\project\StudyLounge\StudyLounge25\bin\Debug\net8.0\Azure.Identity.dll
 C:\project\StudyLounge\StudyLounge25\bin\Debug\net8.0\Humanizer.dll
@@ -167,4 +168,3 @@ C:\project\StudyLounge\StudyLounge25\obj\Debug\net8.0\refint\StudyLounge25.dll
 C:\project\StudyLounge\StudyLounge25\obj\Debug\net8.0\StudyLounge25.pdb
 C:\project\StudyLounge\StudyLounge25\obj\Debug\net8.0\StudyLounge25.genruntimeconfig.cache
 C:\project\StudyLounge\StudyLounge25\obj\Debug\net8.0\ref\StudyLounge25.dll
-C:\project\StudyLounge\StudyLounge25\bin\Debug\net8.0\AutoMapper.dll

@@ -11,6 +11,7 @@ namespace StudyLounge25.DTO
         public string CabinName { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+        public decimal amountToPay { get; set; }
         public string AssignmentStatus { get; set; }
     }
 }

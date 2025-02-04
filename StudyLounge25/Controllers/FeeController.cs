@@ -24,15 +24,23 @@ namespace StudyLounge25.Controllers
             return Ok(feeModalData);
         }
 
+        [HttpGet("GetFeeDetails{id}")]
+        public async Task<IActionResult> GetFeeDetailsById([FromRoute] Guid id)
+        {
+            var feeDetailDto = await _ifee.GetFeeDetailsById(id);
+            return Ok(feeDetailDto);
+        }
+
         [HttpPost("SubmitFeeDetails")]
         public async Task<IActionResult> SubmitFeeDetails([FromBody] FeeDto feeDto)
         {
             var feeDomainModal = new FeeModal()
             {
-                PaymentDate = new DateTime(),
+                PaymentDate = feeDto.PaymentDate,
                 PaymentStatus = feeDto.PaymentStatus,
                 Amount = feeDto.Amount,
                 StudentId=feeDto.StudentId,
+
             };
 
             var feeModalData = await _ifee.CreateFeeDetails(feeDomainModal);

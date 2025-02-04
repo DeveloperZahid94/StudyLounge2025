@@ -15,17 +15,39 @@ namespace StudyLounge25.ServicesRepo.Repositories
         }
         public async Task<CabinAssignmentModal?> AddAssignment(CabinAssignmentModal cabinAssignment)
         {
-            var student = await _sLdbContext.Students.FirstOrDefaultAsync(x => x.StudentId == cabinAssignment.StudentId);
-            if (student != null)
+            try
             {
+                
+                var student = await _sLdbContext.Students.FirstOrDefaultAsync(x => x.StudentId == cabinAssignment.StudentId);
+                if (student == null)
+                {
+                    throw new Exception("Student not found");
+                }
+
+               
+                var cabin = await _sLdbContext.Cabins.FirstOrDefaultAsync(x => x.CabinId == cabinAssignment.CabinId);
+                if (cabin == null)
+                {
+                    throw new Exception("Cabin not found");
+                }
+
+               
                 student.Status = "Assigned";
                 _sLdbContext.Students.Update(student);
                 await _sLdbContext.SaveChangesAsync();
-            }
 
-            await _sLdbContext.CabinAssignments.AddAsync(cabinAssignment);
-            await _sLdbContext.SaveChangesAsync();
-            return cabinAssignment;
+               
+                await _sLdbContext.CabinAssignments.AddAsync(cabinAssignment);
+                await _sLdbContext.SaveChangesAsync();
+
+                return cabinAssignment;
+            }
+            catch (Exception ex)
+            {
+                // Log the error for easier debugging
+                Console.WriteLine($"Error: {ex.Message}");
+                throw new Exception("An error occurred while processing the request.", ex);
+            }
         }
 
 

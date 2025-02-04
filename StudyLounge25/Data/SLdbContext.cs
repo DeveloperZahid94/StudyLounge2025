@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StudyLounge25.DomainModels;
+using StudyLounge25.DTO;
 
 namespace StudyLounge25.Data
 {
@@ -14,6 +15,8 @@ namespace StudyLounge25.Data
         public virtual DbSet<FeeModal> Fees { get; set; }
         public virtual DbSet<AdminLogModal> AdminLogs { get; set; }
         public virtual DbSet<CabinSpecificationModal> CabinSpecifications { get; set; }
+
+        public DbSet<FeeSummaryCustom> FeeSummaries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -56,6 +59,8 @@ namespace StudyLounge25.Data
 
             modelBuilder.Entity<CabinModal>()
                .HasKey(ca => ca.CabinId);
+
+            modelBuilder.Entity<FeeSummaryCustom>().HasNoKey().ToView(null);
 
         }
     }

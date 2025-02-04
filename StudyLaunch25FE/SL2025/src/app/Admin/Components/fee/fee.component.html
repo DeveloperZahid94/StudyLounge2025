@@ -33,13 +33,16 @@
           <td>{{ payment.paymentStatus }}</td>
           <td>
             <div class="d-flex">
-              <div class="example-button-container">
+              <!-- <div class="example-button-container">
                 <button mat-raised-button color="primary" (click)="paymentAdd(payment)" class="">
                     <mat-icon>add_circle</mat-icon>
                     Proceed To Payment
                   </button>
-              </div>&nbsp;
-              
+              </div>&nbsp; -->
+              <button mat-raised-button color="primary" (click)="detail(payment)" class="">
+                <mat-icon>add_circle</mat-icon>
+                Proceed To Payment
+              </button>
             </div>
           </td>
         </tr>

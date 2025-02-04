@@ -20,6 +20,7 @@
           <th>Cabin</th>
           <th>Start Date</th>
           <th>End Date</th>
+          <th>TotalFee</th>
           <th>Status</th>
           <th>Actions</th>
         </tr>
@@ -31,13 +32,18 @@
           <td>{{ assignment.cabinName }}</td>
           <td>{{ assignment.startDate | date }}</td>
           <td>{{ assignment.endDate | date }}</td>
+          <td>{{ assignment.amountToPay}}</td>
           <td>{{ assignment.assignmentStatus }}</td>
           <td>
             <div class="d-flex">
                 <div class="example-button-container">
-                    <button color="primary" mat-mini-fab aria-label="Example icon button with a menu icon">
+                    <!-- <button color="primary" mat-mini-fab aria-label="Example icon button with a menu icon">
                       <mat-icon>currency_rupee</mat-icon>
-                    </button>
+                    </button> -->
+                    <button mat-raised-button color="primary" (click)="paymentAdd(assignment)" class="">
+                        <mat-icon>currency_rupee</mat-icon>
+                        Proceed To Payment
+                      </button>
                 </div>&nbsp;
                 <div class="example-button-container">
                 <button  color="primary" mat-mini-fab (click)="editAssignment(assignment)">
