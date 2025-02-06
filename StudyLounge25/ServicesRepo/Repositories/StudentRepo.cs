@@ -46,7 +46,7 @@ namespace StudyLounge25.ServicesRepo.Repositories
             return studentModal;
         }
 
-        [HttpDelete("DeleteStudent{id}")]
+        
         public async Task<StudentModal?> DeleteStudent(Guid id)
         {
             var recordExist = await _sLdbContext.Students.FirstOrDefaultAsync(x => x.StudentId == id);
@@ -59,6 +59,27 @@ namespace StudyLounge25.ServicesRepo.Repositories
             return recordExist;
         }
 
-        
+        public async Task<IEnumerable<StudentModal>> SearchStudent(string searchtext)
+        {
+            if (string.IsNullOrEmpty(searchtext))
+            {
+                return null;
+            }
+
+            // Perform a case-insensitive search using Contains
+            var students = await _sLdbContext.Students
+                .Where(x => EF.Functions.Like(x.FirstName, $"%{searchtext}%") ||
+                    EF.Functions.Like(x.LastName, $"%{searchtext}%") ||
+                    EF.Functions.Like(x.Email, $"%{searchtext}%") ||
+                    EF.Functions.Like(x.PhoneNumber, $"%{searchtext}%") ||
+                    EF.Functions.Like(x.Address, $"%{searchtext}%"))
+                //.Include(x => x.Fees)
+                .ToListAsync();
+
+            return students;
+        }
+
+
+
     }
 }

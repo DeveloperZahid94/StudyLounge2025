@@ -32,6 +32,8 @@ import { ReportsComponent } from './Components/reports/reports.component';
 import { AssignmentListComponent } from './Components/cabin/assignment-list/assignment-list.component';
 import { InvoiceComponent } from './Components/fee/invoice/invoice.component';
 import { PaymentDialogComponent } from './Components/fee/payment-dialog/payment-dialog.component';
+import { FeeDetailDialogComponent } from './Components/fee/fee-detail-dialog/fee-detail-dialog.component';
+import { SearchComponent } from './Components/reports/search/search.component';
 
 
 
@@ -47,7 +49,9 @@ import { PaymentDialogComponent } from './Components/fee/payment-dialog/payment-
     ReportsComponent,
     AssignmentListComponent,
     InvoiceComponent,
-    PaymentDialogComponent
+    PaymentDialogComponent,
+    FeeDetailDialogComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,

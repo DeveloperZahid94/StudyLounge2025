@@ -80,5 +80,16 @@ namespace StudyLounge25.Controllers
             }
             return Ok(resp);
         }
+
+        [HttpGet("SearchStudent{searchText}")]
+        public async Task<IActionResult> SearchStudent([FromRoute]string searchText)
+        {
+            var resp = await _istudent.SearchStudent(searchText);
+            if (resp == null)
+            {
+                return NotFound();
+            }
+            return Ok(resp);
+        }
     }
 }

@@ -51,18 +51,51 @@ namespace StudyLounge25.ServicesRepo.Repositories
             return feeDtoList;
         }
 
+        public async Task<List<fullReportDto>> GetFullDetailsById(string searchTerm)
+        {
+            var feeModalData = await _sLdbContext.Fees
+                            .Include(f => f.Student)  // Include student details
+                            .Include(f => f.Student.CabinAssignments)  // Include cabin assignments for the student
+                                .ThenInclude(ca => ca.Cabin)  // Include cabin details from cabin assignments
+                            .Where(f => f.Student.FirstName.Contains(searchTerm))  // Search based on FirstName (like operation)
+                            .ToListAsync();
+
+            var fullDetailDto = feeModalData.Select(fee => new fullReportDto
+            {
+                Fee = fee,
+                Student = fee.Student,
+                Cabin = fee.Student.CabinAssignments.FirstOrDefault()?.Cabin
+            }).ToList();
+            return fullDetailDto;
+        }
+
+
         public async Task<FetchFeeDetailDto> GetFeeDetailsById(Guid id)
         {
             var feeSummary = await _sLdbContext.FeeSummaries
                 .FromSqlRaw(@"
-                            select s.FirstName+'-'+s.LastName Name,s.Email,s.PhoneNumber,s.RegistrationDate,f.PaymentDate,f.PaymentStatus,
-                            (DATEDIFF(DAY,cs.StartDate,cs.EndDate))*c.PricePerDay as TotalFee,
-                            f.Amount as FeePaid,c.CabinName
-                            from Cabins c join CabinAssignments cs on cs.CabinId=c.CabinId
-                            join Fees f on f.StudentId=cs.StudentId
-                            join Students s on s.StudentId=cs.StudentId
-                            where s.StudentId={0}", id)
-                            .FirstOrDefaultAsync();
+                           select 
+                                s.StudentId, 
+                                MAX(s.FirstName + '-' + s.LastName) as Name,
+                                MAX(s.Email) as Email,
+                                MAX(s.PhoneNumber) as PhoneNumber,
+                                MAX(s.RegistrationDate) as RegistrationDate,
+                                MAX(f.PaymentDate) as PaymentDate,
+                                MAX(f.PaymentStatus) as PaymentStatus,
+                                MAX(DATEDIFF(DAY, cs.StartDate, cs.EndDate) * c.PricePerDay) as TotalFee,
+                                SUM(f.Amount) as FeePaid,
+                                MAX(c.CabinName) as CabinName
+                            from 
+                            Cabins c
+                            join CabinAssignments cs on cs.CabinId = c.CabinId
+                            join Fees f on f.StudentId = cs.StudentId
+                            join Students s on s.StudentId = cs.StudentId
+                            where 
+                            s.StudentId = {0}
+                            group by 
+                            s.StudentId", id)
+                 .FirstOrDefaultAsync();
+
 
             if (feeSummary == null)
             {

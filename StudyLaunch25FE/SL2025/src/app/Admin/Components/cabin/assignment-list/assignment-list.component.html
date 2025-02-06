@@ -37,15 +37,6 @@
           <td>
             <div class="d-flex">
                 <div class="example-button-container">
-                    <!-- <button color="primary" mat-mini-fab aria-label="Example icon button with a menu icon">
-                      <mat-icon>currency_rupee</mat-icon>
-                    </button> -->
-                    <button mat-raised-button color="primary" (click)="paymentAdd(assignment)" class="">
-                        <mat-icon>currency_rupee</mat-icon>
-                        Proceed To Payment
-                      </button>
-                </div>&nbsp;
-                <div class="example-button-container">
                 <button  color="primary" mat-mini-fab (click)="editAssignment(assignment)">
                     <mat-icon class="btn-sm" >edit</mat-icon>
                 </button>
@@ -54,7 +45,18 @@
                 <button color="warn" mat-mini-fab  (click)="deleteAssignment(assignment.assignmentId)">
                     <mat-icon id=""  >delete</mat-icon>
                 </button>
-                </div>
+                </div>&nbsp;
+                <div class="example-button-container">
+                  <!-- <button color="primary" mat-mini-fab aria-label="Example icon button with a menu icon">
+                    <mat-icon>currency_rupee</mat-icon>
+                  </button> -->
+                  <button mat-raised-button color="primary" 
+                  *ngIf="assignment.assignmentStatus!='Active'"
+                  (click)="paymentAdd(assignment)" class="">
+                      <mat-icon>currency_rupee</mat-icon>
+                      Proceed To Payment
+                    </button>
+              </div>
             </div> 
         </td>
         </tr>

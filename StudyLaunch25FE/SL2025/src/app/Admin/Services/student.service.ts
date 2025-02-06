@@ -33,5 +33,9 @@ export class StudentService {
     return this._http.delete(url);
   }
 
+  getStudentSearch(searchTxt:string){
+    const url = `${this.baseUrl}Student/SearchStudent${searchTxt}`;
+    return this._http.get(url);
+  }
 
 }

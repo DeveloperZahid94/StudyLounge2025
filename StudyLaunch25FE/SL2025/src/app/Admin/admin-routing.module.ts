@@ -9,6 +9,7 @@ import { AssignmentComponent } from './Components/cabin/assignment/assignment.co
 import { FeeComponent } from './Components/fee/fee.component';
 import { ReportsComponent } from './Components/reports/reports.component';
 import { AssignmentListComponent } from './Components/cabin/assignment-list/assignment-list.component';
+import { SearchComponent } from './Components/reports/search/search.component';
 
 const routes: Routes = [
   { path: 'student', component: StudentAddComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path:'assignmentList',component:AssignmentListComponent},
   {path:'assignment',component:AssignmentComponent},
   {path:'fee',component:FeeComponent},
-  {path:'report',component:ReportsComponent}
+  {path:'report',component:ReportsComponent},
+  {path:'search',component:SearchComponent}
   // { path: '**', component: StudentListComponent }
 
 ];

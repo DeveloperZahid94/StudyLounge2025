@@ -8,5 +8,7 @@ namespace StudyLounge25.ServicesRepo.IServiceRepo
         Task<StudentModal?> AddStudent(StudentModal studentModal);
         Task<StudentModal?> UpdateStudentDetails(Guid id, StudentModal studentModal);
         Task<StudentModal?> DeleteStudent(Guid id);
+
+        Task<IEnumerable<StudentModal>> SearchStudent(string searchtext);
     }
 }

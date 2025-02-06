@@ -8,5 +8,6 @@ namespace StudyLounge25.ServicesRepo.IServiceRepo
         Task<List<FeeDto>> GetFeeDetails();
         Task<FeeModal?> CreateFeeDetails(FeeModal feeModal);
         Task<FetchFeeDetailDto> GetFeeDetailsById(Guid id);
+        Task<List<fullReportDto>> GetFullDetailsById(string searchTerm);
     }
 }

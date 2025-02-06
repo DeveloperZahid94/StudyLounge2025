@@ -1,0 +1,55 @@
+<div class="mt-2 ms-1">
+    <div class="row">
+        <div class="col-sm-10">
+            <input type="search" class="form-control" name="searchTxt" [(ngModel)]="searchTxt" placeholder="Search by Name or Email or Address or phone"/>
+        </div>
+        <div class="col-sm-2">
+            <button mat-raised-button color="primary" name="searchTxt" (click)="getDetail()" [(ngModel)]="searchTxt" >
+                <mat-icon>search</mat-icon>
+                Search
+            </button>
+        </div>
+    </div>
+    <div class="mt-2 ms-1">
+
+        <table class="table table-striped" *ngIf="studentRecord?.length > 0; else noRecordsTemplate">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Date of Birth</th>
+                <th scope="col">Registration Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Address</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let student of studentRecord">
+                <td>{{ student.firstName }} - {{ student.lastName }}</td>
+                <td>{{ student.dateOfBirth | date: 'yyyy-MM-dd' }}</td>
+                <td>{{ student.registrationDate | date: 'yyyy-MM-dd' }}</td>
+                <td>{{ student.status }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.phoneNumber }}</td>
+                <td>{{ student.address }}</td>
+        
+                <td>
+                  <button mat-mini-fab color="primary" (click)="detail(student)">
+                    <mat-icon>preview</mat-icon>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        
+          <!-- No record found template -->
+          <ng-template #noRecordsTemplate>
+            <div class="text-center">
+              <h4>No record found</h4>
+            </div>
+          </ng-template>
+      </div>
+      
+</div>

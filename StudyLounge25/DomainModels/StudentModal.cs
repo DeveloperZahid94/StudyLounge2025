@@ -1,4 +1,6 @@
-﻿namespace StudyLounge25.DomainModels
+﻿using System.Text.Json.Serialization;
+
+namespace StudyLounge25.DomainModels
 {
     public class StudentModal
     {
@@ -14,6 +16,7 @@
         public bool? IsDisabled { get; set; }
 
         public virtual ICollection<CabinAssignmentModal> CabinAssignments { get; set; }
+        
         public virtual ICollection<FeeModal> Fees { get; set; }
     }
 }

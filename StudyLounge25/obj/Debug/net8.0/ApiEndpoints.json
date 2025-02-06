@@ -169,6 +169,22 @@
   },
   {
     "ContainingType": "StudyLounge25.Controllers.FeeController",
+    "Method": "GetFullDetailsById",
+    "RelativePath": "api/Fee/GetFullDetailsById{searchTerm}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchTerm",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StudyLounge25.Controllers.FeeController",
     "Method": "SubmitFeeDetails",
     "RelativePath": "api/Fee/SubmitFeeDetails",
     "HttpMethod": "POST",
@@ -220,6 +236,22 @@
       {
         "Name": "id",
         "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "StudyLounge25.Controllers.StudentController",
+    "Method": "SearchStudent",
+    "RelativePath": "api/Student/SearchStudent{searchText}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchText",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

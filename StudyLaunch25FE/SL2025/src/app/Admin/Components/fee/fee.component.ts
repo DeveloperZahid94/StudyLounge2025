@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PaymentDialogComponent } from './payment-dialog/payment-dialog.component';
 import { InvoiceService } from '../../Services/invoice.service';
+import { FeeDetailDialogComponent } from './fee-detail-dialog/fee-detail-dialog.component';
 
 @Component({
   selector: 'app-fee',
@@ -33,8 +34,19 @@ export class FeeComponent implements OnInit {
   //     });
   // }
 
-  public detail(record:any){
+  public detail(record:any){debugger
     console.log(record)
+      console.log('Add New Payment');
+    this.dialog
+      .open(FeeDetailDialogComponent, {
+        width: '550px',
+        data: record,
+      })
+      .afterClosed()
+      .subscribe((res) => {
+        if (res) {
+        }
+      });
   }
 
   getFeeDetails(){

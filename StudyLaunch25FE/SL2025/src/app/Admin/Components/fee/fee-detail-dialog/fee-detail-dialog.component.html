@@ -1,0 +1,71 @@
+<div class="container mt-2">
+    <div class="d-flex" style="justify-content: space-between; width: 100%; align-items: center;">
+        <h2 class="mb-2">Fee Details</h2>
+        <div class="d-flex mb-1" style="margin-left: auto;">
+            <button mat-mini-fab color="primary" (click)="downloadReceipt()">
+                <mat-icon>download</mat-icon>
+            </button>&nbsp;
+            <button mat-mini-fab color="warn" 
+                *ngIf="getHasBalance(feeDetails.totalFee, feeDetails.feePaid)"
+                (click)="paymentAdd(feeDetails)">
+                <mat-icon>currency_rupee</mat-icon>
+            </button>
+        </div>
+    </div>
+    
+
+    <table class="table table-bordered" id="receipt-table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Field</th>
+                <th scope="col">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Cabin Name</strong></td>
+                <td>{{ feeDetails.cabinName }}</td>
+            </tr>
+            <tr>
+                <td><strong>Name</strong></td>
+                <td>{{ feeDetails.name }}</td>
+            </tr>
+            <tr>
+                <td><strong>Email</strong></td>
+                <td>{{ feeDetails.email }}</td>
+            </tr>
+            <tr>
+                <td><strong>Phone Number</strong></td>
+                <td>{{ feeDetails.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <td><strong>Registration Date</strong></td>
+                <td>{{ feeDetails.registrationDate | date }}</td>
+            </tr>
+            <tr>
+                <td><strong>Payment Date</strong></td>
+                <td>{{ feeDetails.paymentDate | date:'short' }}</td>
+            </tr>
+            <tr>
+                <td><strong>Payment Status</strong></td>
+                <td>{{ feeDetails.paymentStatus }}</td>
+            </tr>
+            <tr>
+                <td><strong>Total Fee</strong></td>
+                <td>{{ feeDetails.totalFee | currency }}</td>
+            </tr>
+            <tr>
+                <td><strong>Fee Paid</strong></td>
+                <td>{{ feeDetails.feePaid | currency }}</td>
+            </tr>
+            <tr>
+                <td><strong>Balance</strong></td>
+                <td *ngIf="getHasBalance(feeDetails.totalFee, feeDetails.feePaid)"
+                 style="background-color: red;color: white;">
+                 {{ feeDetails.totalFee-feeDetails.feePaid | currency }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+   
+</div>

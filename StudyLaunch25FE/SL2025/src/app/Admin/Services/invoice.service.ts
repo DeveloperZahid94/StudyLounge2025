@@ -14,6 +14,11 @@ export class InvoiceService {
       const url = `${this.baseUrl}Fee/GetFeeDetails`;
       return this._http.get(url);
     }
+
+    getFeeDetailById(id:any){
+      const url = `${this.baseUrl}Fee/GetFeeDetails${id}`;
+      return this._http.get(url);
+    }
   
     postPaymentDetail(data:any){ 
       const url = `${this.baseUrl}Fee/SubmitFeeDetails`;

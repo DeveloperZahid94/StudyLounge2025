@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using StudyLounge25.DomainModels;
 using StudyLounge25.DTO;
 using StudyLounge25.ServicesRepo.IServiceRepo;
+using System.Text.Json;
 
 namespace StudyLounge25.Controllers
 {
@@ -30,6 +31,24 @@ namespace StudyLounge25.Controllers
             var feeDetailDto = await _ifee.GetFeeDetailsById(id);
             return Ok(feeDetailDto);
         }
+        [HttpGet("GetFullDetailsById{searchTerm}")]
+        public async Task<IActionResult> GetFullDetailsById([FromRoute] string searchTerm)
+        {
+            var FullDetailDto = await _ifee.GetFullDetailsById(searchTerm);
+            // Set up JsonSerializerOptions to handle circular references
+            var options = new JsonSerializerOptions
+            {
+                ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve,
+                WriteIndented = true // Pretty print for JSON
+            };
+
+            // Serialize the result with circular reference handling
+            var jsonResponse = JsonSerializer.Serialize(FullDetailDto, options);
+
+            // Return the JSON response
+            return Content(jsonResponse, "application/json");
+        }
+        
 
         [HttpPost("SubmitFeeDetails")]
         public async Task<IActionResult> SubmitFeeDetails([FromBody] FeeDto feeDto)
